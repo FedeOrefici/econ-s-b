@@ -50,9 +50,4 @@ router.delete('/users/:id', (req, res) => {
         .catch((err) => res.json({message: err.message}))
 })
 
-
-
-
-
-
 module.exports = router;
