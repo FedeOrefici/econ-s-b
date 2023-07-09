@@ -1,9 +1,8 @@
 import { useState } from "react"
 import axios from "axios"
 
-const Register = () => {
 
-   
+const Register = () => {
 
     const [register, setRegister] = useState({
         name: '',
@@ -24,6 +23,10 @@ const Register = () => {
             console.log(res.data);
         }).catch(err => {
             console.log({message: err.message});
+        })
+        setRegister({
+            name: '',
+            email: ''
         })
     }
 
