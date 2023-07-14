@@ -7,6 +7,8 @@ const Register = () => {
     const [register, setRegister] = useState({
         name: '',
         email: '',
+        password: '',
+        typePassword: ''
     })
 
     const handleChange = (event) => {
@@ -26,13 +28,11 @@ const Register = () => {
         })
         setRegister({
             name: '',
-            email: ''
+            email: '',
+            password: '',
+            typePassword: ''
         })
     }
-
-    console.log(register);
-    
-
 
   return (
     <div>
@@ -44,6 +44,14 @@ const Register = () => {
             <div>
                 <label>email</label>
                 <input value={register.email} name="email" onChange={handleChange} type='email' />
+            </div>
+            <div>
+                <label>password</label>
+                <input value={register.password} name="password" onChange={handleChange} type='password' />
+            </div>
+            <div>
+                <label>password</label>
+                <input value={register.typePassword} name="typePassword" onChange={handleChange} type='password' />
             </div>
             <button type="submit">create</button>
         </form>
