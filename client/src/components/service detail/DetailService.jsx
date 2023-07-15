@@ -1,7 +1,10 @@
 
 const DetailService = () => {
   return (
-    <div>Detail Service</div>
+    <div>
+      <p>detail service</p>
+      <button>add to cart</button>
+    </div>
   )
 }
 
