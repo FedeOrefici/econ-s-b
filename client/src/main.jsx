@@ -3,12 +3,11 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 
-//components
-import router from './components/routes/Routes.jsx'
+import router from './routes/Routes'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
   </React.StrictMode>,
 )
