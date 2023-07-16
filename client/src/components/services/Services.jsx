@@ -6,7 +6,7 @@ const Services = () => {
   
 
   return (
-    <div>
+    <div className="text-white">
         <p>services Info</p>
         <NavLink to='/allServices'>go to services</NavLink>
         

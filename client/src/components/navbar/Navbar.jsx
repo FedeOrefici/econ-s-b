@@ -7,7 +7,7 @@ const Navbar = () => {
   
   return (
     <UserContextProvider>
-      <div className="w-full bg-gray-900 py-2 text-white flex items-center justify-around">
+      <div className="w-full bg-transparent py-2 text-white flex items-center justify-around">
         <div className="py-4"><span class="material-symbols-outlined">groups</span></div>
           <ul className="flex w-1/2 gap-10 justify-around py-4">
               <NavLink className='cursor-pointer py-4' to='/allServices'>services</NavLink>
