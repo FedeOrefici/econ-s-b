@@ -21,7 +21,7 @@ const DetailService = () => {
   return (
     <div className="">
       <Navbar />
-        <div className="flex items-center justify-center w-full border border-red-600 h-full">
+        <div className="flex items-center justify-center w-full border border-red-600 h-screen">
         {
           <div className="bg-slate-200 w-1/2 mx-auto shadow-lg rounded p-4" key={product?._id}>
             <p>{product?.name}</p>
