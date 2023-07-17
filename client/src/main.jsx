@@ -8,13 +8,13 @@ import ProductContextProvider from './context/contextProducts'
 import CartContextProvider from './context/ContextCart'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <CartContextProvider>
-  <UserContextProvider>
-    <ProductContextProvider>
-      <React.StrictMode>
-        <RouterProvider router={router} />
-      </React.StrictMode>
-    </ProductContextProvider>
-  </UserContextProvider>
-  </CartContextProvider>
+  <React.StrictMode>
+    <UserContextProvider>
+      <CartContextProvider>
+        <ProductContextProvider>
+          <RouterProvider router={router} />
+        </ProductContextProvider>
+      </CartContextProvider>
+    </UserContextProvider>
+  </React.StrictMode>
 )
