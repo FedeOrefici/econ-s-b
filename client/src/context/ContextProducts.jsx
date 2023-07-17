@@ -16,6 +16,8 @@ const ProductContextProvider = ({children}) => {
         axiosData()
     }, [])
 
+    console.log(products);
+
     return (
         <ProductContext.Provider value={{products}}>
             {children}
