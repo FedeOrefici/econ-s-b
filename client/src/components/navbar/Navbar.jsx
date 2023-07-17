@@ -7,23 +7,26 @@ import { CartContext } from "../../context/ContextCart"
 
 const Navbar = () => {
 
-  const { handleOpenCart, isCartVisible } = useContext(CartContext)
-
+  const { handleOpenClose, isOpen, handleCloseCart, isCartVisible } = useContext(CartContext)
+  
   
   return (
     <UserContextProvider>
       <div className="w-full h-[100px] py-2 text-white flex items-center justify-around">
         <div>
-          <span className="material-symbols-outlined">groups</span>
+          <span class="material-symbols-outlined">groups</span>
         </div>
           <div className="flex items-center cursor-pointer gap-1">
             <NavLink className='cursor-pointer' to='/'>Home</NavLink>
             <NavLink className='cursor-pointer' to='/allServices'>services</NavLink>
             <UserProfile />
-          <div onClick={handleOpenCart} className="flex items-center justify-center">
-            <span className="material-symbols-outlined">shopping_cart</span>
+          <div onClick={handleOpenClose} className="flex items-center justify-center">
+            <span class="material-symbols-outlined">shopping_cart</span>
+            {isCartVisible ? (
+              <Cart />
+              ) : (
+            null)}
           </div>
-            {isCartVisible ? <Cart /> : null}
           </div>
       </div>
     </UserContextProvider>
