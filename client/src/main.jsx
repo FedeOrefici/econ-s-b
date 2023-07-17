@@ -5,8 +5,10 @@ import './index.css'
 import router from './routes/Routes'
 import UserContextProvider from './context/ContextUser'
 import ProductContextProvider from './context/contextProducts'
+import CartContextProvider from './context/ContextCart'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  <CartContextProvider>
   <UserContextProvider>
     <ProductContextProvider>
       <React.StrictMode>
@@ -14,4 +16,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </React.StrictMode>
     </ProductContextProvider>
   </UserContextProvider>
+  </CartContextProvider>
 )

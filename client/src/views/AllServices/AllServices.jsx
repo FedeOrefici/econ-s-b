@@ -1,4 +1,5 @@
 import Card from "../../components/card/Card"
+import Navbar from "../../components/navbar/Navbar"
 
 
 const AllServices = () => {
@@ -7,12 +8,12 @@ const AllServices = () => {
 
 
   return (
-    <div>
-        <p>all services</p>
-        <div className="w-full border h-screen flex">
+    <>
+        <Navbar />
+        <div className="w-full flex">
             <Card />
         </div>
-    </div>
+    </>
   )
 }
 

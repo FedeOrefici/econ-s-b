@@ -1,19 +1,30 @@
 import { NavLink } from "react-router-dom"
 import UserProfile from "../user/UserProfile"
 import UserContextProvider from "../../context/ContextUser"
+import Cart from "../cart/Cart"
+import { useContext } from "react"
+import { CartContext } from "../../context/ContextCart"
 
 const Navbar = () => {
+
+  const { handleOpenClose, isOpen } = useContext(CartContext)
 
   
   return (
     <UserContextProvider>
-      <div className="w-full bg-transparent py-2 text-white flex items-center justify-around">
-        <div className="py-4"><span class="material-symbols-outlined">groups</span></div>
-          <ul className="flex w-1/2 gap-10 justify-around py-4">
-              <NavLink className='cursor-pointer py-4' to='/allServices'>services</NavLink>
-              <li className="cursor-pointer py-4">contact</li>
-              <UserProfile />
-          </ul>
+      <div className="w-full h-[100px] py-2 text-white flex items-center justify-around">
+        <div>
+          <span class="material-symbols-outlined">groups</span>
+        </div>
+          <div className="flex items-center cursor-pointer gap-1">
+            <NavLink className='cursor-pointer' to='/'>Home</NavLink>
+            <NavLink className='cursor-pointer' to='/allServices'>services</NavLink>
+            <UserProfile />
+          <div onClick={handleOpenClose} className="flex items-center justify-center">
+            <span class="material-symbols-outlined">shopping_cart</span>
+            {isOpen ? <Cart /> : null}
+          </div>
+          </div>
       </div>
     </UserContextProvider>
   )

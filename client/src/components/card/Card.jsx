@@ -5,7 +5,6 @@ import { ProductContext } from "../../context/contextProducts"
 const Card = () => {
 
     const { products } = useContext(ProductContext)
-    console.log(products);
 
   return (
     <>
