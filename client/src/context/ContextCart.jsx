@@ -5,16 +5,23 @@ export const CartContext = createContext()
 const CartContextProvider = ({children}) => {
 
     const [isOpen, setIsOpen] = useState(false)
+    const [isCartVisible, setIsCartVisible] = useState(false)
 
-    const handleOpenClose = () => {
-        setIsOpen(!isOpen)
-        console.log('click');
+    const handleOpenCart = () => {
+        setIsOpen(true)
+        setIsCartVisible(true)
     }
 
+    const handleCloseCart = () => {
+        setIsCartVisible(false)
+        setIsOpen(false)
+    }
+    
+    
 
 
     return (
-        <CartContext.Provider value={{handleOpenClose, isOpen}}>
+        <CartContext.Provider value={{handleOpenCart, isOpen, handleCloseCart, isCartVisible}}>
             {children}
         </CartContext.Provider>
     )
