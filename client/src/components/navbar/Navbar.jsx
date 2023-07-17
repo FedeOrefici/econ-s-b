@@ -21,7 +21,7 @@ const Navbar = () => {
             <NavLink className='cursor-pointer' to='/allServices'>services</NavLink>
             <UserProfile />
           </div>
-          <div onClick={handleOpenCart} className="w-[40px] h-[40px] flex items-center justify-center cursor-pointer hover:bg-white hover:text-slate-900 hover:rounded-full hover:w-[40px] hover:h-[40px] hover:transition-colors">
+          <div onClick={handleOpenCart} className="w-[40px] h-[40px] flex items-center justify-center text-lime-400 cursor-pointer hover:bg-lime-400 hover:text-slate-900 hover:rounded-full hover:w-[40px] hover:h-[40px] hover:transition-colors">
             <span className="material-symbols-outlined">shopping_cart</span>
           </div>
             {isCartVisible ? <Cart /> : null}
