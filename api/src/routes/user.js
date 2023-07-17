@@ -4,7 +4,6 @@ const userSchema = require('../models/user')
 const router = express.Router()
 
 //create user
-//use the model to ask the data from the body
 router.post('/users', (req, res) => {
     const user = userSchema(req.body)
      user
@@ -26,7 +25,7 @@ router.get('/users', (req, res) => {
 router.get('/users/:id', (req, res) => {
     const { id } = req.params;
     userSchema
-        .findById(id) //always need an id to find by id
+        .findById(id)
         .then((data) => res.json(data))
         .catch((err) => res.json({message: err.message}))
 })
@@ -35,8 +34,8 @@ router.get('/users/:id', (req, res) => {
 router.put('/users/:id', (req, res) => {
     const { id }  = req.params;
     const { name, email } = req.body;
-    userSchema //2 parameters
-        .updateOne( {_id: id}, { $set: {name, email, password} }) //set the data and put in an object 
+    userSchema 
+        .updateOne( {_id: id}, { $set: {name, email, password} }) 
         .then((data) => res.json((data)))
         .catch((err) => res.json({message: err.message}))
 })
