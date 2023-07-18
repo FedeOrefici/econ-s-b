@@ -4,6 +4,7 @@ const userRoutes = require('./routes/user')
 const productRoutes = require('./routes/products')
 const cors = require('cors')
 const routerRegister = require('./routes/register/register')
+const routerLogin = require('./routes/login/login')
 require('dotenv').config()
 
 const app = express()
@@ -16,6 +17,7 @@ app.use(express.json())
 app.use('/api', userRoutes)
 app.use('/api', productRoutes)
 app.use('/api', routerRegister)
+app.use('/api', routerLogin)
 
 //main Route
 app.get('/', (req, res) => {
