@@ -4,14 +4,14 @@ const userSchema = require('../models/user')
 const router = express.Router()
 
 //create user
-router.post('/users', (req, res) => {
-    const user = userSchema(req.body)
-     user
-     .save()
-     .then((data) => res.json(data))
-     .catch((err) => res.json({message: err.message}))
+// router.post('/users', (req, res) => {
+//     const user = userSchema(req.body)
+//      user
+//      .save()
+//      .then((data) => res.json(data))
+//      .catch((err) => res.json({message: err.message}))
      
-})
+// })
 
 //get users
 router.get('/users', (req, res) => {
