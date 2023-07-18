@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom"
 import back from '../../../assets/backhome.jpg'
 import google from '../../../assets/logogoogle.png'
 import validationLogin from "./validation"
+import axios from "axios"
+import Swal from "sweetalert2"
 
 const Login = () => {
 
@@ -31,12 +33,32 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(login)
-    setLogin({
-      email: '',
-      password: ''
+    const errors = validationLogin(login)
+    if(Object.keys(errors).length > 0){
+      Swal.fire({
+        title: 'Empty fields',
+        icon: 'error',
+        confirm: 'accept'
     })
-    navigate('/')
+      return;
+    }
+    axios.post('http://localhost:3000/api/login', login)
+    .then((res) => {
+      Swal.fire({
+        title: res.data.message,
+        icon: 'info',
+        confirmButtonText: 'Accept'
+      });
+      setLogin({
+        email: '',
+        password: ''
+      });
+      navigate('/');
+    })
+    .catch(error => {
+      console.log({message: error.message});
+  })
+ 
   }
 
 

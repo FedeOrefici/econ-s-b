@@ -3,8 +3,11 @@ import axios from "axios"
 import back from '../../../assets/backhome.jpg'
 import validationRegister from "./validations"
 import Swal from "sweetalert2"
+import { useNavigate } from "react-router-dom"
 
 const Register = () => {
+
+    const navigate = useNavigate()
 
     const [register, setRegister] = useState({
         name: '',
@@ -38,7 +41,7 @@ const Register = () => {
         if(Object.keys(errors).length > 0){
             Swal.fire({
                 title: 'Empty fields',
-                icon: 'warning',
+                icon: 'error',
                 confirm: 'accept'
             })
             return;
@@ -47,17 +50,18 @@ const Register = () => {
         .then(res => {
             Swal.fire({
                 title: res.data.message,
-                icon: 'warning',
-                confirm: 'accept'
-            });
-        }).catch(err => {
-            console.log({message: err.message});
+                icon: 'info',
+                confirm: 'accept',
+            })
         })
         setRegister({
             name: '',
             email: '',
             password: '',
             typePassword: ''
+        })
+        .catch(error => {
+            console.log({message: error.message});
         })
     }
 
