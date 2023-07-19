@@ -17,8 +17,6 @@ const CartContextProvider = ({children}) => {
         setIsOpen(false)
     }
     
-    
-
 
     return (
         <CartContext.Provider value={{handleOpenCart, isOpen, handleCloseCart, isCartVisible}}>

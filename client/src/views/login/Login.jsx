@@ -39,26 +39,31 @@ const Login = () => {
         title: 'Empty fields',
         icon: 'error',
         confirm: 'accept'
-    })
+      })
       return;
     }
     axios.post('http://localhost:3000/api/login', login)
     .then((res) => {
+
+      const token = res.data.token
+      const user = res.data.user
+      localStorage.setItem('token', token)
+      localStorage.setItem('user', JSON.stringify(user))
+
       Swal.fire({
         title: res.data.message,
         icon: 'info',
         confirmButtonText: 'Accept'
-      });
-      setLogin({
-        email: '',
-        password: ''
-      });
+      }) 
       navigate('/');
     })
+    setLogin({
+      email: '',
+      password: ''
+    })
     .catch(error => {
-      console.log({message: error.message});
-  })
- 
+      console.log({message: error.message})
+    })
   }
 
 
