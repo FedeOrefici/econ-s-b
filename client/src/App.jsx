@@ -7,7 +7,6 @@ import Banner from "./components/banner/Banner"
 
 const App = () => {
 
-  
 
 
   return (

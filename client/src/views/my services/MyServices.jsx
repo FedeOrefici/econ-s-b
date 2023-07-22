@@ -1,7 +1,11 @@
+import Navbar from "../../components/navbar/Navbar"
 
 const MyServices = () => {
   return (
-    <div>MyServices</div>
+    <>
+    <Navbar />
+    <div className="w-full h-screen">MyServices</div>
+    </>
   )
 }
 
