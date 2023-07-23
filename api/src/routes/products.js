@@ -4,13 +4,17 @@ const productSchema = require('../models/product')
 const router = express.Router()
 
 //create product
-router.post('/products', (req, res) => {
-    const product = productSchema(req.body)
-    product
-        .save()
-        .then((data) => res.json(data))
-        .catch((err) => res.json({message: err.message}))
+router.post('/products', async(req, res) => {
+    try {
+        const product = new productSchema(req.body)
+        await product.validate()
+        const savedProduct = await product.save()
+        res.json(savedProduct)
+    } catch (error) {
+        res.status(400).json({message: error.message})
+    }
 })
+
 
 router.get('/products/', (req, res) => {
     productSchema
@@ -19,6 +23,7 @@ router.get('/products/', (req, res) => {
     .catch((err) => res.json({message: err.message}))
 })
 
+
 router.get('/products/:id', (req, res) => {
     const { id } = req.params
     productSchema
@@ -26,7 +31,6 @@ router.get('/products/:id', (req, res) => {
     .then((data) => res.json(data))
     .catch((err) => res.json({message: err.message}))
 })
-
 
 router.put('/products/:id', (req, res) => {
     const { id } = req.params
