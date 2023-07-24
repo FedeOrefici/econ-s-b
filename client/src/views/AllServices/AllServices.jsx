@@ -1,7 +1,5 @@
-import { useContext, useEffect } from "react"
 import Card from "../../components/card/Card"
 import Navbar from "../../components/navbar/Navbar"
-import { ProductContext } from "../../context/contextProducts"
 
 
 const AllServices = () => {

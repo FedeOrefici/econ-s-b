@@ -7,6 +7,12 @@ import { useNavigate } from "react-router-dom"
 
 const CreateService = () => {
 
+
+  // const id = localStorage.getItem('user')
+  // const userId = JSON.parse(id)._id
+  // console.log(userId, 'asdasd');
+
+
   const navigate = useNavigate()
 
   const [service, setService] = useState({
@@ -45,7 +51,14 @@ const CreateService = () => {
       })
       return;
     }
-    axios.post('http://localhost:3000/api/products/', service)
+
+    const id = localStorage.getItem('user')
+    const userId = JSON.parse(id)._id
+
+    const serviceData = {...service, owner: userId}
+    
+    axios.post('http://localhost:3000/api/products/', serviceData)
+
     .then(res => {
       Swal.fire({
         title: 'Service Created',
@@ -53,12 +66,12 @@ const CreateService = () => {
         confirm: 'accept'
       })
       navigate('/allServices')
-    })
-    setService({
-      name: '',
-      price: '',
-      description: '',
-      photo: ''
+      setService({
+        name: '',
+        price: '',
+        description: '',
+        photo: ''
+      })
     })
     .catch(error => {
       console.log({message: error.message});
