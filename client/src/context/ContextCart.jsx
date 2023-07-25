@@ -6,6 +6,7 @@ const CartContextProvider = ({children}) => {
 
     const [isOpen, setIsOpen] = useState(false)
     const [isCartVisible, setIsCartVisible] = useState(false)
+    const [cart, setCart] = useState([])
 
     const handleOpenCart = () => {
         setIsOpen(true)
@@ -16,10 +17,20 @@ const CartContextProvider = ({children}) => {
         setIsCartVisible(false)
         setIsOpen(false)
     }
+
+    const addToCart = (product) => {
+        setCart([...cart, product])
+    }
+
+    
+
+
+
+
     
 
     return (
-        <CartContext.Provider value={{handleOpenCart, isOpen, handleCloseCart, isCartVisible}}>
+        <CartContext.Provider value={{handleOpenCart, isOpen, handleCloseCart, isCartVisible, addToCart, cart, setCart}}>
             {children}
         </CartContext.Provider>
     )
