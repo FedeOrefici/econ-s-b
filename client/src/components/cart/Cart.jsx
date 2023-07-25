@@ -4,22 +4,25 @@ import { CartContext } from "../../context/ContextCart"
 
 const Cart = () => {
 
-  const { handleCloseCart, cart } = useContext(CartContext)
+  const { handleCloseCart, cart, deleteItemFromCart } = useContext(CartContext)
 
-  console.log(cart, 'desde cart');
 
   return (
-    <>
-      {cart ? cart.map(item => (
-        <div key={item._id} className="text-black absolute flex items-center justify-center flex-col gap-2 bg-slate-100 h-[700px] w-[400px] top-[25px] right-[140px] p-4 rounded opacity-0 transition-opacity duration-300 hover:opacity-100 hover:shadow-lg overflow-y-auto">
-          <div className="flex gap-4 items-center justify-center">
-            <p className="italic font-medium">{item?.name}</p>
-            <span>$ {item?.price}</span>
-          </div>
-          <button onClick={handleCloseCart} className="text-white bg-red-600 hover:bg-red-500 p-2 rounded">close</button>
+  
+      <div className="absolute top-[30px] right-32 w-[400px] h-[700px] bg-slate-400 rounded shadow-lg p-3">
+        {cart.map((item) => {
+          return (
+            <div className="flex  items-center justify-between px-4 mt-1 text-black py-2 bg-slate-300 rounded w-full">
+              <p className="font-medium">{item.name}</p>
+              <p className=""> $ {item.price}</p>
+              <button onClick={() => deleteItemFromCart(item.id)} className="bg-lime-400 p-2 rounded text-black hover:bg-lime-500">delete</button>
+            </div>
+          )
+        })}
+        <button className="bg-lime-400 text-black rounded p-2 hover:bg-lime-500">Go to pay</button>
+        <button className="bg-red-600 p-2 w-[120px] rounded hover:bg-red-700" onClick={handleCloseCart}>close</button>
       </div>
-      )) : ( null )}
-    </>
+    
   )
 }
 

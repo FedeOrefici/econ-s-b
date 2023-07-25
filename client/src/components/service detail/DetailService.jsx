@@ -33,7 +33,7 @@ const DetailService = () => {
               <button onClick={() => addToCart(product)} className="bg-slate-800 hover:bg-slate-700 text-white rounded py-2 w-[180px]">add to cart</button>
               <NavLink to='/allServices' className="bg-slate-800 hover:bg-slate-700 text-white rounded py-2 w-[180px] text-center">more services</NavLink>
             </div>
-          </div>  
+          </div>
         }
         </div>
     </div>
