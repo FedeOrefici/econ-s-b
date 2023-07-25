@@ -15,13 +15,23 @@ router.post('/products', async(req, res) => {
         const allData = user.products.push(savedProduct)
         await user.save()
         res.json(allData)
+    } catch (error) {
+        res.status(400).json({message: error.message})
+    }
+})
 
+router.get('/products/users/:userId', async (req, res) => {
+    try {
+        const { userId } = req.params
+        const products = await productSchema.find({ owner: userId })
+        res.status(200).json(products)  
     } catch (error) {
         res.status(400).json({message: error.message})
     }
 })
 
 
+//all products
 router.get('/products/', (req, res) => {
     productSchema
     .find()
@@ -29,7 +39,7 @@ router.get('/products/', (req, res) => {
     .catch((err) => res.json({message: err.message}))
 })
 
-
+//products by id
 router.get('/products/:id', (req, res) => {
     const { id } = req.params
     productSchema
@@ -38,6 +48,7 @@ router.get('/products/:id', (req, res) => {
     .catch((err) => res.json({message: err.message}))
 })
 
+//put a product
 router.put('/products/:id', (req, res) => {
     const { id } = req.params
     const { name, description, photo, price } = req.body
@@ -48,6 +59,7 @@ router.put('/products/:id', (req, res) => {
 
 })
 
+//delete a product
 router.delete('/products/:id', (req, res) => {
     const { id } = req.params
     productSchema
