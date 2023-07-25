@@ -18,9 +18,6 @@ const MyServices = () => {
     axiosData()
   }, [data?._id])
 
-
-
-
   return (
     <>
     <Navbar />
