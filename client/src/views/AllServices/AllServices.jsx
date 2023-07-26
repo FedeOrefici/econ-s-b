@@ -27,7 +27,7 @@ const AllServices = () => {
     <>
         <Navbar />
         <div className="flex flex-col h-auto w-max-[50%] items-center justify-center gap-2 py-5" style={{backgroundImage:`url(${background})`, backgroundSize: 'cover'}}>
-              <div className="flex flex-row flex-wrap gap-2 items-center justify-center min-h-[800px]">
+              <div className="flex flex-row flex-wrap gap-2 items-center justify-center min-h-[800px] w-2/3">
               {currenPageData?.map((product) => (
                 <Card product={product} />
               ))}

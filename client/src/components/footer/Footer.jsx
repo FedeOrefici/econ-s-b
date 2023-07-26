@@ -2,8 +2,11 @@
 const Footer = () => {
   return (
     <div className="bg-gray-400 h-[300px] flex items-center justify-center">
-      <div className="flex items-center flex-col justify-center gap-1">
-        <span class="material-symbols-outlined">groups</span>
+      <div className="flex items-center justify-around w-full ">
+        <div className="flex items-center justify-center gap-10">
+          <span class="material-symbols-outlined">groups</span>
+          <p>site by <span className="italic">Federico Orefici</span></p>
+        </div>
         <div className="flex gap-4 items-center justify-center">
           <span className="font-medium">Econ |</span>
           <span className="italic">asesorias</span>
