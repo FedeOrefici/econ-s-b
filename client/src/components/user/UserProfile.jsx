@@ -4,6 +4,10 @@ import { NavLink, useNavigate } from "react-router-dom"
 
 const UserProfile = () => {
 
+
+  
+
+
   const navigate = useNavigate()
   const [user, setUser] = useState(null)
   const [openOptions, setOpenOptions] = useState(false)
@@ -32,7 +36,7 @@ const UserProfile = () => {
         <p className="text-gray-900">{user?.name}</p>
         <div className="flex text-gray-900">
             <span class="material-symbols-outlined">account_circle</span>
-            {openOptions ? (<div className="bg-white text-center w-[250px] top-[75px] left-[1089px] absolute">
+            {openOptions ? (<div className="bg-white text-center w-[250px] top-[75px] left-[1248px] absolute">
               <ul className="py-2 flex flex-col items-center justify-center shadow-lg bg-slate-100">
                 <NavLink to='/createService' className="py-2 hover:bg-gray-300 w-full">Create Service</NavLink>
                 <NavLink to='/myServices' className="py-2 hover:bg-gray-300 w-full">My services</NavLink>

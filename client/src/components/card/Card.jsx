@@ -1,11 +1,10 @@
 import { useContext } from "react"
 import { NavLink } from "react-router-dom"
-import { ProductContext } from "../../context/contextProducts"
+import { ProductContext } from "../../context/ContextProducts"
 
 const Card = () => {
 
     const { products } = useContext(ProductContext)
-    
 
   return (
     <>

@@ -16,8 +16,21 @@ const ProductContextProvider = ({children}) => {
         axiosData()
     }, [])
 
+
+    const searchProducts = async (name) => {
+        try {
+            const response = await axios.get(`http://localhost:3000/api/products?name=${name}`)
+            setProducts(response.data)
+        } catch (error) {
+            console.log('error searching products', error);
+        }
+    }
+
+
+  
+
     return (
-        <ProductContext.Provider value={{products}}>
+        <ProductContext.Provider value={{products, searchProducts}}>
             {children}
         </ProductContext.Provider>
     )
