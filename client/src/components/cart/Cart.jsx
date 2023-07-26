@@ -15,7 +15,7 @@ const Cart = () => {
             <div className="flex  items-center justify-between px-4 mt-1 text-black py-2 bg-slate-300 rounded w-full">
               <p className="font-medium">{item.name}</p>
               <p className=""> $ {item.price}</p>
-              <button onClick={() => deleteItemFromCart(item.id)} className="bg-lime-400 p-2 rounded text-black hover:bg-lime-500">delete</button>
+              <button onClick={() => deleteItemFromCart(item._id)} className="bg-lime-400 p-2 rounded text-black hover:bg-lime-500">delete</button>
             </div>
           )
         })}
