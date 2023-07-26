@@ -4,6 +4,7 @@ import background from '../../../assets/backhome.jpg'
 import ReactPaginate from 'react-paginate'
 import { useContext, useEffect, useState } from "react"
 import { ProductContext } from "../../context/ContextProducts"
+import Footer from "../../components/footer/Footer"
 
 
 const AllServices = () => {
@@ -32,7 +33,7 @@ const AllServices = () => {
               ))}
               </div>
             <ReactPaginate
-            className="bg-slate-900 w-full m-10 py-10 rounded text-white flex items-center justify-center gap-20"
+            className="w-full m-10 py-10 rounded text-white flex items-center justify-center gap-20"
             previousLabel={'previous'}
             nextLabel={'next'}
             breakLabel={'...'}
@@ -48,6 +49,7 @@ const AllServices = () => {
             breakLinkClassName={'hover:bg-red-500'}
             />
         </div>
+        <Footer />
     </>
   )
 }
