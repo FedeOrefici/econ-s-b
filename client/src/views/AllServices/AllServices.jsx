@@ -2,7 +2,7 @@ import Card from "../../components/card/Card"
 import Navbar from "../../components/navbar/Navbar"
 import background from '../../../assets/backhome.jpg'
 import ReactPaginate from 'react-paginate'
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { ProductContext } from "../../context/ContextProducts"
 
 
@@ -18,11 +18,15 @@ const AllServices = () => {
     setCurrentPage(selected)
   }
 
+  useEffect(() => {
+    setCurrentPage(0)
+  }, [products])
+
   return (
     <>
         <Navbar />
         <div className="flex flex-col h-auto w-max-[50%] items-center justify-center gap-2 py-5" style={{backgroundImage:`url(${background})`, backgroundSize: 'cover'}}>
-              <div className="flex flex-row flex-wrap gap-2 items-center justify-center">
+              <div className="flex flex-row flex-wrap gap-2 items-center justify-center min-h-[800px]">
               {currenPageData?.map((product) => (
                 <Card product={product} />
               ))}
