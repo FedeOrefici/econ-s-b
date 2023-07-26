@@ -20,20 +20,30 @@ const CartContextProvider = ({children}) => {
     }
 
     const addToCart = (product) => {
-        setCart([...cart, product])
-        Swal.fire({
-            icon: 'success',
-            title: 'Item added to the Cart',
-            confirmButtonText: 'Accept'
-        })
+        console.log(product, 'asdasdasd');
+        const productExist = cart.find((item) => item._id === product._id)
+            if(productExist){
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Item is already added',
+                    confirmButtonText: 'Accept'
+                })
+            } else {
+                setCart([...cart, product])
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Item added to the Cart',
+                    confirmButtonText: 'Accept'
+                })     
+            }
     }
 
-    const deleteItemFromCart = (id) => {
+    const deleteItemFromCart = (_id) => {
+        console.log(_id, 'aca id');
         setCart(prevCart => {
-            const deleteItem = prevCart.filter((item) => item.id !== id)
+            const deleteItem = prevCart.filter((item) => item._id !== _id)
             return deleteItem
         })
-
     }
 
 
