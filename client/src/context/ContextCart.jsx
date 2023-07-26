@@ -20,7 +20,6 @@ const CartContextProvider = ({children}) => {
     }
 
     const addToCart = (product) => {
-        console.log(product, 'asdasdasd');
         const productExist = cart.find((item) => item._id === product._id)
             if(productExist){
                 Swal.fire({
@@ -39,19 +38,11 @@ const CartContextProvider = ({children}) => {
     }
 
     const deleteItemFromCart = (_id) => {
-        console.log(_id, 'aca id');
         setCart(prevCart => {
             const deleteItem = prevCart.filter((item) => item._id !== _id)
             return deleteItem
         })
     }
-
-
-
-
-
-
-    
 
     return (
         <CartContext.Provider value={{

@@ -5,6 +5,7 @@ import Cart from "../cart/Cart"
 import { useContext } from "react"
 import { CartContext } from "../../context/ContextCart"
 import Swal from "sweetalert2"
+import SearchBar from "../search bar/SearchBar"
 
 const Navbar = () => {
 
@@ -30,7 +31,9 @@ const Navbar = () => {
         <div>
           <span className="material-symbols-outlined">groups</span>
         </div>
-          <div className="flex items-center justify-between px-20 cursor-pointer gap-10 w-1/2">
+          <div className="flex items-center justify-between px-20 cursor-pointer gap-10 w-2/3">
+          
+            <SearchBar />
             <NavLink className='cursor-pointer' to='/'>Home</NavLink>
             <NavLink className='cursor-pointer' to='/allServices'>services</NavLink>
             <UserProfile />
