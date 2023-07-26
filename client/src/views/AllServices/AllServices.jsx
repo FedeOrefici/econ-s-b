@@ -21,11 +21,15 @@ const AllServices = () => {
   return (
     <>
         <Navbar />
-        <div className="flex flex-row flex-wrap h-screen w-max-[50%] items-center justify-center gap-2 py-5" style={{backgroundImage:`url(${background})`, backgroundSize: 'cover'}}>
-            {currenPageData?.map((product) => (
-              <Card product={product} />
-            ))}
+        <div className="flex flex-col h-auto w-max-[50%] items-center justify-center gap-2 py-5 border border-red-600" style={{backgroundImage:`url(${background})`, backgroundSize: 'cover'}}>
+              <div className="flex flex-row flex-wrap gap-2 items-center justify-center">
+              {currenPageData?.map((product) => (
+                <Card product={product} />
+              ))}
+              </div>
+            
             <ReactPaginate
+            className="bg-red-600 flex items-center justify-center gap-10"
             previousLabel={'previous'}
             nextLabel={'next'}
             breakLabel={'...'}
