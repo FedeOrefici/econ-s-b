@@ -6,12 +6,14 @@ export const ProductContext = createContext()
 const ProductContextProvider = ({children}) => {
 
     const [products, setProducts] = useState()
+    const [allProducts, setAllProducts] = useState()
 
     useEffect(() => {
         const axiosData = async () => {
             const endpoint = 'http://localhost:3000/api/products/'
             const response = await axios.get(endpoint)
             setProducts(response.data)
+            setAllProducts(response.data)
         }
         axiosData()
     }, [])
@@ -26,11 +28,12 @@ const ProductContextProvider = ({children}) => {
         }
     }
 
-
-  
+    const backMenu = () => {
+        setProducts(allProducts)
+    }
 
     return (
-        <ProductContext.Provider value={{products, searchProducts}}>
+        <ProductContext.Provider value={{products, searchProducts, backMenu}}>
             {children}
         </ProductContext.Provider>
     )
