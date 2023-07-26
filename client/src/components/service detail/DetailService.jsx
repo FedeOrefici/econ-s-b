@@ -3,11 +3,13 @@ import { NavLink, useParams } from "react-router-dom"
 import axios from "axios"
 import Navbar from "../navbar/Navbar"
 import { CartContext } from "../../context/ContextCart"
+import { ProductContext } from "../../context/ContextProducts"
 
 const DetailService = () => {
 
   const { id } = useParams()
   const { addToCart } = useContext(CartContext)
+  const { backMenu } = useContext(ProductContext)
 
   const [product, setProduct] = useState(null)
 
@@ -31,7 +33,7 @@ const DetailService = () => {
             <p>${product?.price}</p>
             <div className="flex gap-1">
               <button onClick={() => addToCart(product)} className="bg-slate-800 hover:bg-slate-700 text-white rounded py-2 w-[180px]">add to cart</button>
-              <NavLink to='/allServices' className="bg-slate-800 hover:bg-slate-700 text-white rounded py-2 w-[180px] text-center">more services</NavLink>
+              <NavLink onClick={backMenu} to='/allServices' className="bg-slate-800 hover:bg-slate-700 text-white rounded py-2 w-[180px] text-center">more services</NavLink>
             </div>
           </div>
         }
