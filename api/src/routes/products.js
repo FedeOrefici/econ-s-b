@@ -32,11 +32,20 @@ router.get('/products/users/:userId', async (req, res) => {
 
 
 //all products
-router.get('/products/', (req, res) => {
-    productSchema
-    .find()
-    .then((data) => res.json(data))
-    .catch((err) => res.json({message: err.message}))
+router.get('/products/', async (req, res) => {
+    const { name } = req.query
+    try {
+        let products;
+        if(name){
+            const regex = new RegExp(name, 'i')
+            products = await productSchema.find({name: regex})
+        } else {
+            products = await productSchema.find()
+        }
+        return res.status(200).json(products)
+    } catch (error) {
+        res.status(500).json({message: error.message})    
+    }
 })
 
 //products by id
