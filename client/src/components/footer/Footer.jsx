@@ -1,7 +1,7 @@
 
 const Footer = () => {
   return (
-    <div className="bg-gray-400 h-[300px] flex items-center justify-center">
+    <div className="bg-slate-50 h-[300px] flex items-center justify-center">
       <div className="flex items-center justify-around w-full ">
         <div className="flex items-center justify-center gap-10">
           <span class="material-symbols-outlined">groups</span>

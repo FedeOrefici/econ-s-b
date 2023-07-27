@@ -1,5 +1,8 @@
 import { useState } from "react"
 import validationsContact from "./validations"
+import Swal from "sweetalert2"
+import axios from "axios"
+import { endpoint } from "../../../config"
 
 const Contact = () => {
 
@@ -26,7 +29,23 @@ const Contact = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(message)
+    const errors = validationsContact(message)
+    if(Object.keys(errors).length > 0){
+        Swal.fire({
+          title: 'Empty fields',
+          icon: 'error',
+          confirmButtonText: 'Accept'
+        })
+    } else {
+      axios.post(endpoint, message, {headers: {'Acept': 'application/json'}})
+      .then(response => console.log(response))
+      .catch(error => console.log(error))
+      Swal.fire({
+        title: 'Message delivered',
+        icon: 'success',
+        confirmButtonText: 'Accept'
+      })
+    }
     setMessage({
       email: '',
       message: ''
