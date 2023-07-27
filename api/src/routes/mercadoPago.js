@@ -7,14 +7,9 @@ mercadopago.configure({
 })
 
 app.post("/create_preference", (req, res) => {
+	const { items } = req.body
 	let preference = {
-		items: [
-			{
-				title: req.body.description,
-				unit_price: Number(req.body.price),
-				quantity: Number(req.body.quantity),
-			}
-		],
+		items: items,
 		back_urls: {
 			"success": "http://localhost:5173/",
 			"failure": "http://localhost:5173/",
