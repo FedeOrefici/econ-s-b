@@ -2,12 +2,24 @@ import { useEffect, useState } from "react"
 import Navbar from "../../components/navbar/Navbar"
 import axios from "axios"
 import back from '../../../assets/backabout.jpg'
+import Swal from "sweetalert2"
+import { useNavigate } from "react-router-dom"
 
 const MyServices = () => {
   
+  const navigate = useNavigate()
   const [userService, setUserService] = useState()
   const userId = localStorage.getItem('user')
   const data = JSON.parse(userId)
+  
+  if(userService?.products.length === 0){
+    Swal.fire({
+      title:'You don´t have services, please, create a new one',
+      icon: 'info',
+      confirmButtonText: 'Accept'
+    })
+    navigate('/allServices')
+  }
 
   useEffect(() => {
     const endpoint = `http://localhost:3000/api/users/${data?._id}`
@@ -22,10 +34,42 @@ const MyServices = () => {
     console.log('edit');
   }
 
-  const removeService = () => {
-    console.log('remove');
-  }
-
+  const removeService = (_id) => {
+    Swal.fire({
+      title: 'Confirm Deletion',
+      text: 'Are you sure you want to delete this service?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'Cancel',
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        try {
+          const endpoint = `http://localhost:3000/api/products/${_id}`;
+          axios.delete(endpoint)
+          .then(() => {
+            setUserService((prevState) => ({
+              ...prevState,
+              products: prevState.products.filter((item) => item._id !== _id),
+            }));
+            Swal.fire({
+              title: 'Service Deleted',
+              text: 'The service has been deleted successfully!',
+              icon: 'success',
+              confirmButtonText: 'Accept',
+            });
+          });
+        } catch (error) {
+          console.log('error to delete', error);
+        }
+      }
+    });
+  };
+  
+  console.log(userService?.products,'acacacacaca');
+  
 
   return (
     <>
@@ -52,7 +96,7 @@ const MyServices = () => {
               <td className="border p-2 text-center">{serv.price}</td>
               <td className="border p-2 text-center flex gap-2">
                 <button onClick={editService} className="bg-green-600 py-2 w-[80px] rounded text-white">edit</button>
-                <button onClick={removeService} className="bg-red-600 py-2 w-[80px] rounded text-white">delete</button>
+                <button onClick={() => removeService(serv._id)} className="bg-red-600 py-2 w-[80px] rounded text-white">delete</button>
               </td>
             </tr>
             ))}
