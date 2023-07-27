@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react"
 import { CartContext } from "../../context/ContextCart"
+import { NavLink } from "react-router-dom"
 
 
 const Cart = () => {
@@ -37,8 +38,8 @@ const Cart = () => {
             <span>{totalPrice}</span>
           </div>
           <div className="flex items-center justify-center p-2 gap-10 h-1/4 w-full">
-            <button className="bg-lime-400 text-black rounded w-[120px] p-2 hover:bg-lime-500">Go to pay</button>
-            <button className="bg-red-600 p-2 w-[120px] rounded hover:bg-red-700" onClick={handleCloseCart}>close</button>
+            <NavLink to='/payment' onClick={handleCloseCart} className="bg-lime-400 text-black rounded text-center w-[120px] p-2 hover:bg-lime-500">Go to pay</NavLink>
+            <button className="bg-red-600 p-2 w-[120px] rounded hover:bg-red-700" onClick={handleCloseCart}>Close</button>
           </div>
         </div>
       </div>
