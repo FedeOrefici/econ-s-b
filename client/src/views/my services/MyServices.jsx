@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import Navbar from "../../components/navbar/Navbar"
-import { useParams } from "react-router-dom"
 import axios from "axios"
+import back from '../../../assets/backabout.jpg'
 
 const MyServices = () => {
   
@@ -18,11 +18,20 @@ const MyServices = () => {
     axiosData()
   }, [data?._id])
 
+  const editService = () => {
+    console.log('edit');
+  }
+
+  const removeService = () => {
+    console.log('remove');
+  }
+
+
   return (
     <>
     <Navbar />
-    <div className="w-full h-screen flex items-center justify-center">
-      <table className="border">
+    <div className="w-full h-screen flex items-center justify-center" style={{backgroundImage:`url(${back})`}}>
+      <table className="border bg-slate-50">
         <thead className="border">
           <tr className="border bg-slate-200">
             <th className="px-2 border p-2 text-center">Photo</th>
@@ -41,9 +50,9 @@ const MyServices = () => {
               <td className="border p-2 text-center">{serv.name}</td>
               <td className="border p-2 text-center">{serv.description}</td>
               <td className="border p-2 text-center">{serv.price}</td>
-              <td className="border p-2 text-center">
-                <button>edit</button>
-                <button>delete</button>
+              <td className="border p-2 text-center flex gap-2">
+                <button onClick={editService} className="bg-green-600 py-2 w-[80px] rounded text-white">edit</button>
+                <button onClick={removeService} className="bg-red-600 py-2 w-[80px] rounded text-white">delete</button>
               </td>
             </tr>
             ))}
