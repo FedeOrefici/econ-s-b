@@ -12,7 +12,7 @@ const Card = ({product}) => {
           <span className="border-b-2 border-lime-400 w-2/3"></span>
           <div className="flex text-white top-[30px]">
             <span>$</span>
-            <p>{'10'}</p>
+            <p>{product?.price}</p>
           </div>
             <NavLink to={`/products/${product._id}`} className="font-medium bg-lime-400 w-[170px] hover:bg-lime-500 text-center py-2 rounded text-slate-950">more</NavLink>
         </div>
