@@ -15,19 +15,14 @@ const Payment = () => {
     const [preferenceId, setPreferenceId] = useState(null)
     initMercadoPago('TEST-d494afdf-12b5-4b17-800f-9eaa2d0c21ce')
 
-
-    // const itemsToPay = cart.map(item => ({
-    //     description: item.name,
-    //     price: item.price,
-    //     quantity: 1[0]
-    // }))
-
     const createPreference = async () => {
         try {
             const response = await axios.post("http://localhost:3000/api/create_preference", {
-                description: 'book',
-                price: 100,
-                quantity: 1
+                    items: cart.map(items => ({
+                    title: items.description,
+                    unit_price: items.price,
+                    quantity: 1
+                }))
             })
             const { id } = response.data
             return id
@@ -61,7 +56,7 @@ const Payment = () => {
             } else {
                 return;
             }
-        });
+        })
     }
 
   return (
@@ -81,9 +76,9 @@ const Payment = () => {
                 </div>
                 <div className='flex gap-4'>
                     <button onClick={handleBuy} className='bg-green-700 py-2 w-[120px] hover:bg-green-600 text-white rounded'>go to pay</button>
-                    {preferenceId && <Wallet initialization={{ preferenceId }}/>}
                     <button onClick={handleCancel} className='bg-red-700 py-2 w-[120px] hover:bg-red-600 text-white rounded'>cancel</button>
                 </div>
+                    {preferenceId && <Wallet initialization={{ preferenceId }}/>}
             </div>
         </div>
     </>
