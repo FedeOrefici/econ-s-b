@@ -1,7 +1,6 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, NavLink } from "react-router-dom"
 import back from '../../../assets/backhome.jpg'
-import google from '../../../assets/logogoogle.png'
 import validationLogin from "./validation"
 import axios from "axios"
 import Swal from "sweetalert2"
@@ -84,8 +83,9 @@ const Login = () => {
           <button type="submit" className="bg-lime-500 w-[300px] rounded p-2 text-slate-950 font-semibold">login</button>
         </div>
         <div className="mx-[300px] mt-10 flex items-center justify-center gap-4">
-          <p className="text-white">or <span className="font-bold italic underline">Login</span> with</p>
-          <img src={google} className="w-[10%] cursor-pointer" />
+          <p>you don´t have account?</p>
+          <NavLink to='/register' className="text-white"><span className="font-bold italic underline">Register</span></NavLink>
+          
         </div>
       </form>
     </div>
