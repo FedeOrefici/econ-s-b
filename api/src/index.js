@@ -5,6 +5,7 @@ const productRoutes = require('./routes/products')
 const cors = require('cors')
 const routerRegister = require('./routes/register/register')
 const routerLogin = require('./routes/login/login')
+const routermercadopago = require('./routes/mercadoPago')
 require('dotenv').config()
 
 const app = express()
@@ -18,6 +19,8 @@ app.use('/api', userRoutes)
 app.use('/api', productRoutes)
 app.use('/api', routerRegister)
 app.use('/api', routerLogin)
+app.use('/api' ,routermercadopago)
+
 
 //main Route
 app.get('/', (req, res) => {
