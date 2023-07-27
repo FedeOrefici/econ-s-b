@@ -6,6 +6,7 @@ import AllServices from '../views/AllServices/AllServices';
 import DetailService from '../components/service detail/DetailService';
 import CreateService from '../views/create service/CreateService';
 import MyServices from '../views/my services/MyServices';
+import Payment from '../views/payment/Payment';
 
 
 const router = createBrowserRouter([
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
     {
         path: '/myServices',
         element: <MyServices />
+    },
+    {
+        path: '/payment',
+        element: <Payment />
     }
 ])
 
