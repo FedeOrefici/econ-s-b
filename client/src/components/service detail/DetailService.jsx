@@ -1,17 +1,11 @@
 import { useContext, useEffect, useState } from "react"
 import { NavLink, useParams } from "react-router-dom"
-import axios from "axios"
-import Navbar from "../navbar/Navbar"
 import { CartContext } from "../../context/ContextCart"
 import { ProductContext } from "../../context/ContextProducts"
-import back from '../../../assets/backabout.jpg'
-import pic from '../../../assets/pic.jpg'
-const format = require('date-fns')
-const formatDistance = require('date-fns/formatDistance')
+import axios from "axios"
+import Navbar from "../navbar/Navbar"
+import DatesCalendar from "../calendar/DatesCalendar"
 
-const today = new Date()
-const todayFormat = format(today, 'yyy-MM-dd')
-console.log(todayFormat)
 
 
 const DetailService = () => {
@@ -30,6 +24,8 @@ const DetailService = () => {
     }
     axiosDataDetail()
   }, [id])
+
+
 
 
 
@@ -52,7 +48,8 @@ const DetailService = () => {
           </div>
         }
         <div className="flex flex-col justify-center w-[900px] h-[670px] border border-red-600 p-10">
-          <div className="flex items-center justify-center left-10 gap-10 py-2 w-full">
+          <div className="flex flex-col items-center justify-center left-10 gap-10 py-2 w-full">
+            <DatesCalendar />
             <button onClick={() => addToCart(product)} className="bg-slate-900 hover:bg-slate-800 text-white rounded py-2 w-[180px]">add Service and date</button>
           </div>
         </div>
