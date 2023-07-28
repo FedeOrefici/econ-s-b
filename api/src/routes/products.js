@@ -1,15 +1,37 @@
+const path = require('path')
 const express = require('express')
+const multer = require('multer')
 const productSchema = require('../models/product')
 const userSchema = require('../models/user')
-
 const router = express.Router()
 
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        console.log('destination', './uploads')
+        return cb(null, path.join(__dirname, '..', 'uploads'))
+    },
+    filename: (req, file, cb) => {
+        console.log('file name', Date.now());
+        return cb(null, `${Date.now()}-${file.originalname}`)
+    },
+})
+
+const upload = multer({ storage })
+router.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')))
+
 //create product
-router.post('/products', async(req, res) => {
+router.post('/products', upload.single("photo"), async(req, res) => {
+    console.log('uploading file')
+    console.log(req.body)
     try {
         const userId = req.body.owner
         const user = await userSchema.findById(userId)
-        const product = new productSchema(req.body)
+        const product = new productSchema({
+            ...req.body,
+            photo: `/uploads/${req.file.filename}`,
+            owner: userId
+        })
         await product.validate()
         const savedProduct = await product.save()
         const allData = user.products.push(savedProduct)
