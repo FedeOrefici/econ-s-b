@@ -1,9 +1,9 @@
+import { ProductContext } from "../../context/ContextProducts"
+import { useContext, useEffect, useState } from "react"
 import Card from "../../components/card/Card"
 import Navbar from "../../components/navbar/Navbar"
 import background from '../../../assets/backhome.jpg'
 import ReactPaginate from 'react-paginate'
-import { useContext, useEffect, useState } from "react"
-import { ProductContext } from "../../context/ContextProducts"
 import Footer from "../../components/footer/Footer"
 
 
