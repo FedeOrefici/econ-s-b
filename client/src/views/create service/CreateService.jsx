@@ -14,21 +14,28 @@ const CreateService = () => {
     name: '',
     price: '',
     description: '',
-    photo: ''
+    photo: null
   })
 
   const [errors, setErrors] = useState({
     name: '',
     price: '',
     description: '',
-    photo: ''
+    photo: null
   })
 
   const handleChange = (event) => {
-    setService({
-      ...service,
-      [event.target.name]: event.target.value
-    })
+    if(event.target.name === "photo"){
+      setService({
+        ...service,
+        photo: event.target.files[0],
+      })
+    } else {
+      setService({
+        ...service,
+        [event.target.name]: event.target.value
+      })
+    }
     setErrors(validationsService({
       ...service,
       [event.target.name]: event.target.value
@@ -46,15 +53,22 @@ const CreateService = () => {
       })
       return;
     }
-
     const id = localStorage.getItem('user')
     const userId = JSON.parse(id)._id
-
-    const serviceData = {...service, owner: userId}
     
-    axios.post('http://localhost:3000/api/products/', serviceData)
+    const formData = new FormData();
+    formData.append('name', service.name);
+    formData.append('description', service.description);
+    formData.append('price', service.price);
+    formData.append('photo', service.photo);
+    formData.append('owner', userId);
 
-    .then(res => {
+    axios.post('http://localhost:3000/api/products/', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    })
+    .then(response => {
       Swal.fire({
         title: 'Service Created',
         icon: 'success',
@@ -65,7 +79,7 @@ const CreateService = () => {
         name: '',
         price: '',
         description: '',
-        photo: ''
+        photo: null
       })
     })
     .catch(error => {
@@ -78,7 +92,7 @@ const CreateService = () => {
     <>
     <Navbar />
     <div className="w-full h-screen flex items-center justify-center" style={{backgroundImage:`url(${back})`}}>
-        <form onSubmit={handleSubmit} className="w-2/3 h-2/3 p-10 rounded flex items-center justify-center flex-col mx-auto bg-slate-100">
+        <form encType="multipart/form-data" onSubmit={handleSubmit} className="w-2/3 h-2/3 p-10 rounded flex items-center justify-center flex-col mx-auto bg-slate-100">
           <div className="flex flex-col gap-2 w-full h-[80px]">
             <input name="name" onChange={handleChange} value={service.name} type="text" className="py-2 text-black rounded px-2 border" placeholder="name service..." />
             {errors && <span className="text-red-600 pl-2">{errors.name}</span>}
@@ -92,7 +106,11 @@ const CreateService = () => {
             {errors && <span className="text-red-600 pl-2">{errors.price}</span>}
           </div>
           <div className="flex flex-col gap-2 w-full h-[80px]">
-            <input name="photo" type="file" onChange={handleChange} value={service.photo} className="py-2 text-slate-900 rounded text-center px-2 bg-slate-100" />
+            <input
+            name="photo" 
+            type="file" 
+            onChange={handleChange} 
+            className="py-2 text-slate-900 rounded text-center px-2 bg-slate-100" />
             {errors && <span className="text-red-600 pl-2">{errors.photo}</span>}
           </div>
           <button type="submit" className="bg-slate-900 text-white w-[180px] rounded py-2 hover:bg-slate-700">create</button>

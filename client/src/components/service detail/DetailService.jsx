@@ -5,7 +5,14 @@ import Navbar from "../navbar/Navbar"
 import { CartContext } from "../../context/ContextCart"
 import { ProductContext } from "../../context/ContextProducts"
 import back from '../../../assets/backabout.jpg'
-import profile from '../../../assets/pic.jpg'
+import pic from '../../../assets/pic.jpg'
+const format = require('date-fns')
+const formatDistance = require('date-fns/formatDistance')
+
+const today = new Date()
+const todayFormat = format(today, 'yyy-MM-dd')
+console.log(todayFormat)
+
 
 const DetailService = () => {
 
@@ -24,26 +31,31 @@ const DetailService = () => {
     axiosDataDetail()
   }, [id])
 
+
+
   return (
     <div>
       <Navbar />
-        <div className="flex items-center justify-center w-full h-screen" style={{backgroundImage:`url(${back})`}}>
+        <div className="flex items-center justify-center w-full h-screen p-10 bg-slate-50">
         {
-          <div className="bg-slate-100 w-3/4 h-3/4 mx-auto border rounded p-4 flex" key={product?._id}>
-            <img src={profile} className="w-[500px] h-[670px] shadow-lg" />
-            <div className="flex flex-col justify-center w-[900px] h-[670px]">
-              <div className="flex flex-col p-10">
+          <div className="flex flex-col items-center justify-center w-1/2 h-screen mx-auto rounded p-4" key={product?._id}>
+            <div className="flex flex-col items-center justify-center w-[900px] h-[670px] border border-red-600 p-10">
+              <img src={product?.photo} className="w-[300px] h-[300px] border border-red-500 shadow-lg" />
+              <div className="flex flex-col p-10 items-center justify-center text-center">
                 <p className="text-slate-900 text-4xl font-bold py-2">{product?.name}</p>
-                <p className="text-slate-900 text-justify">{product?.description}</p>
+                <p className="text-slate-900 text-center w-[400px]">{product?.description}</p>
                 <p className="font-bold text-slate-900 py-2 mt-4 w-1/2 px-2">${product?.price}</p>
               </div>
-              <div className="flex relative left-10 gap-10 py-2 w-full ">
-                <button onClick={() => addToCart(product)} className="bg-slate-900 hover:bg-slate-800 text-white rounded py-2 w-[180px]">add to cart</button>
+              
                 <NavLink onClick={backMenu} to='/allServices' className="bg-slate-900 hover:bg-slate-800 text-white rounded py-2 w-[180px] text-center">more services</NavLink>
-              </div>
             </div>
           </div>
         }
+        <div className="flex flex-col justify-center w-[900px] h-[670px] border border-red-600 p-10">
+          <div className="flex items-center justify-center left-10 gap-10 py-2 w-full">
+            <button onClick={() => addToCart(product)} className="bg-slate-900 hover:bg-slate-800 text-white rounded py-2 w-[180px]">add Service and date</button>
+          </div>
+        </div>
         </div>
     </div>
   )

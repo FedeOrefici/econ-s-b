@@ -6,8 +6,8 @@ const cors = require('cors')
 const routerRegister = require('./routes/register/register')
 const routerLogin = require('./routes/login/login')
 const routermercadopago = require('./routes/mercadoPago')
-require('dotenv').config()
 
+require('dotenv').config()
 const app = express()
 const port = process.env.PORT || 3000
 
@@ -20,6 +20,8 @@ app.use('/api', productRoutes)
 app.use('/api', routerRegister)
 app.use('/api', routerLogin)
 app.use('/api' ,routermercadopago)
+
+
 
 
 //main Route
