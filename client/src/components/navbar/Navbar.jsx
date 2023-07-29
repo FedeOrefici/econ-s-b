@@ -34,7 +34,7 @@ const Navbar = () => {
           <div className="flex items-center justify-between px-20 cursor-pointer gap-10 w-2/3">
           
             <SearchBar />
-            <NavLink className='cursor-pointer' to='/'>Home</NavLink>
+            <NavLink className='cursor-pointer' to='/home'>Home</NavLink>
             <NavLink className='cursor-pointer' to='/allServices'>services</NavLink>
             <UserProfile />
           </div>

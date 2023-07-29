@@ -54,7 +54,7 @@ const Login = () => {
         icon: 'info',
         confirmButtonText: 'Accept'
       }) 
-      navigate('/');
+      navigate('/home');
     })
     setLogin({
       email: '',

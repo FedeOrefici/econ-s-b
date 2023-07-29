@@ -12,15 +12,15 @@ import Payment from '../views/payment/Payment';
 const router = createBrowserRouter([
     {
         path: '/',
+        element: <Login />,
+    },
+    {
+        path: '/home',
         element: <App />,
     },
     {
         path: '/register',
         element: <Register />,
-    },
-    {
-        path: '/login',
-        element: <Login />,
     },
     {
         path: '/allServices',

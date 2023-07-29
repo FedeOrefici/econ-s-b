@@ -9,6 +9,18 @@ const CartContextProvider = ({children}) => {
     const [isCartVisible, setIsCartVisible] = useState(false)
     const [cart, setCart] = useState([])
 
+    const [value, setValue] = useState(new Date())
+    
+    const handleChange = (date) => {
+        setValue(date)
+    }
+
+    const formatDate = value.toLocaleDateString('en-EN', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    })
+
     const handleOpenCart = () => {
         setIsOpen(true)
         setIsCartVisible(true)
@@ -53,7 +65,11 @@ const CartContextProvider = ({children}) => {
             addToCart,
             cart,
             setCart,
-            deleteItemFromCart}}>
+            deleteItemFromCart,
+            handleChange,
+            formatDate,
+            value
+            }}>
             {children}
         </CartContext.Provider>
     )
