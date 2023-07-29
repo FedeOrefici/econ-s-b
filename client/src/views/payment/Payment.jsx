@@ -63,14 +63,23 @@ const Payment = () => {
     <>
         <Navbar />
         <div className='h-screen flex items-center justify-center' style={{backgroundImage:`url(${back})`}}>
-            <div className='bg-gray-200 w-2/3 h-2/3 flex flex-col items-center justify-center shadow-lg'>
-                <p className='font-medium italic'>You are going to pay:</p>
+            <div className='bg-gray-50 w-2/3 h-2/3 flex flex-col items-center justify-center shadow-lg'>
+                <p className='font-medium text-2xl'>You are going to pay:</p>
                 <div className='flex flex-col items-center py-10'>
                 {cart.map(item => (
-                    <div key={item?._id} className='flex gap-4'>
-                        <p className='font-semibold'>{item?.name}</p>
-                        <p>{item?.description}</p>
-                        <p>$ {item?.price}</p>
+                    <div key={item?._id} className='flex gap-4 flex-col'>
+                        <div className='flex flex-col items-center w-full h-[100px] justify-center p-8'>
+                            <div className='flex gap-2'>
+                              <span className="material-symbols-outlined">verified</span>
+                              <p className='font-bold'>Service</p>
+                              <p className='font-semibold'>{item?.name}</p>
+                            </div>
+                            <p className='font-medium'>$ {item?.price}</p>
+                        </div>
+                        <div className='flex items-center justify-center gap-4'>
+                            <p className='font-medium'>Appointment day:</p>
+                            <span>{item?.date}</span>
+                        </div>
                     </div>
                 ))}
                 </div>

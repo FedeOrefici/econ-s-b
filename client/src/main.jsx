@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import router from './routes/Routes'
 import UserContextProvider from './context/ContextUser'
-import ProductContextProvider from './context/contextProducts'
+import ProductContextProvider from './context/ContextProducts'
 import CartContextProvider from './context/ContextCart'
 
 ReactDOM.createRoot(document.getElementById('root')).render(

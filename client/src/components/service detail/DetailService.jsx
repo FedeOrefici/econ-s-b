@@ -11,7 +11,7 @@ import DatesCalendar from "../calendar/DatesCalendar"
 const DetailService = () => {
 
   const { id } = useParams()
-  const { addToCart } = useContext(CartContext)
+  const { addToCart, formatDate } = useContext(CartContext)
   const { backMenu } = useContext(ProductContext)
 
   const [product, setProduct] = useState(null)
@@ -25,9 +25,10 @@ const DetailService = () => {
     axiosDataDetail()
   }, [id])
 
-
-
-
+  const addProductCart = {
+    ...product,
+    date: formatDate
+  }
 
   return (
     <div>
@@ -50,7 +51,7 @@ const DetailService = () => {
         <div className="flex flex-col justify-center w-[900px] h-[670px] p-10">
           <div className="flex flex-col items-center justify-center left-10 gap-10 py-2 w-full">
             <DatesCalendar />
-            <button onClick={() => addToCart(product)} className="bg-slate-900 hover:bg-slate-800 text-white rounded py-2 w-[180px]">add Service and date</button>
+            <button onClick={() => addToCart(addProductCart)} className="bg-slate-900 hover:bg-slate-800 text-white rounded py-2 w-[180px]">add Service and date</button>
           </div>
         </div>
         </div>
