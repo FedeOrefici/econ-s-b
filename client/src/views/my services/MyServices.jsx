@@ -89,12 +89,12 @@ const MyServices = () => {
             {userService?.products.map(serv => (
             <tr className="border" key={serv._id}>
               <td className="flex items-center justify-center rounded">
-                <img className="p-2 text-center w-[30%] rounded-full" src={serv.photo} />
+                <img className="p-2 text-center w-[20%] rounded-full" src={serv.photo} />
               </td>
               <td className="border p-2 text-center">{serv.name}</td>
               <td className="border p-2 text-center">{serv.description}</td>
               <td className="border p-2 text-center">{serv.price}</td>
-              <td className="border p-2 text-center flex gap-2">
+              <td className="p-2 text-center flex gap-2 items-center justify-center">
                 <button onClick={editService} className="bg-green-600 py-2 w-[80px] rounded text-white">edit</button>
                 <button onClick={() => removeService(serv._id)} className="bg-red-600 py-2 w-[80px] rounded text-white">delete</button>
               </td>
