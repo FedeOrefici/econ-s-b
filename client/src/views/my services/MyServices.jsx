@@ -89,7 +89,7 @@ const MyServices = () => {
             {userService?.products.map(serv => (
             <tr className="border" key={serv._id}>
               <td className="flex items-center justify-center rounded">
-                <img className="p-2 text-center" src={serv.photo} />
+                <img className="p-2 text-center w-[30%] rounded-full" src={serv.photo} />
               </td>
               <td className="border p-2 text-center">{serv.name}</td>
               <td className="border p-2 text-center">{serv.description}</td>
