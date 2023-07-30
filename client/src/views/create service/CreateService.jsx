@@ -6,36 +6,34 @@ import axios from "axios"
 import Swal from "sweetalert2"
 import back from '../../../assets/backhome.jpg'
 
-const CreateService = () => {
 
+const CreateService = () => {
+  
   const navigate = useNavigate()
+  const user = localStorage.getItem('user')
+  const email = JSON.parse(user).email
+  const defaultImg = `https://i.pravatar.cc/300?u=${email}`
 
   const [service, setService] = useState({
     name: '',
     price: '',
     description: '',
-    photo: null
+    photo: defaultImg
   })
 
   const [errors, setErrors] = useState({
     name: '',
     price: '',
     description: '',
-    photo: null
   })
 
   const handleChange = (event) => {
-    if(event.target.name === "photo"){
-      setService({
-        ...service,
-        photo: event.target.files[0],
-      })
-    } else {
+
       setService({
         ...service,
         [event.target.name]: event.target.value
       })
-    }
+    
     setErrors(validationsService({
       ...service,
       [event.target.name]: event.target.value
@@ -53,21 +51,14 @@ const CreateService = () => {
       })
       return;
     }
+
     const id = localStorage.getItem('user')
     const userId = JSON.parse(id)._id
-    
-    const formData = new FormData();
-    formData.append('name', service.name);
-    formData.append('description', service.description);
-    formData.append('price', service.price);
-    formData.append('photo', service.photo);
-    formData.append('owner', userId);
 
-    axios.post('http://localhost:3000/api/products/', formData, {
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        }
-    })
+    const allDataService = {...service, owner: userId}
+
+    axios.post('http://localhost:3000/api/products/', allDataService)
+
     .then(response => {
       Swal.fire({
         title: 'Service Created',
@@ -79,7 +70,6 @@ const CreateService = () => {
         name: '',
         price: '',
         description: '',
-        photo: null
       })
     })
     .catch(error => {
@@ -105,14 +95,14 @@ const CreateService = () => {
             <input name="price" onChange={handleChange} value={service.price} type="number" className="py-2 text-black rounded px-2 border" placeholder="price..." />
             {errors && <span className="text-red-600 pl-2">{errors.price}</span>}
           </div>
-          <div className="flex flex-col gap-2 w-full h-[80px]">
+          {/* <div className="flex flex-col gap-2 w-full h-[80px]">
             <input
             name="photo" 
             type="file" 
             onChange={handleChange} 
             className="py-2 text-slate-900 rounded text-center px-2 bg-slate-100" />
             {errors && <span className="text-red-600 pl-2">{errors.photo}</span>}
-          </div>
+          </div> */}
           <button type="submit" className="bg-slate-900 text-white w-[180px] rounded py-2 hover:bg-slate-700">create</button>
         </form>
     </div>

@@ -10,9 +10,6 @@ const validationsService = (service) => {
     if(!service.price) {
         errors.price = 'Required'
     }
-    if(!service.photo) {
-        errors.photo = 'Required'
-    }
 
     return errors;
 }
