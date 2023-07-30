@@ -34,7 +34,7 @@ const Payment = () => {
 
     const handleBuy = async () => {
         Swal.fire({
-            title: 'Processing payment',
+            title: 'Processing payment...',
             timer: 4000,
         })
         const id = await createPreference()
