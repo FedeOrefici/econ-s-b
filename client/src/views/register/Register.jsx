@@ -53,7 +53,7 @@ const Register = () => {
                 icon: 'info',
                 confirm: 'accept',
             })
-            navigate('/login')
+            navigate('/')
         })
         setRegister({
             name: '',

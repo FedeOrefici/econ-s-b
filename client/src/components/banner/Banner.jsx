@@ -6,8 +6,8 @@ const Banner = () => {
     style={{backgroundImage: `url(${back})`, backgroundSize: 'cover', backgroundPosition: 'center'}}
     >
       <div className="w-1/2 p-10 h-[500px] mt-20">
-        <p className='text-lime-400 text-6xl font-bold'>Asesorias online</p>
-        <p className='text-4xl italic'>pedí tu asesoria online sin moverte de tu casa.</p>
+        <p className='text-lime-400 text-6xl font-bold'>Online advisory services</p>
+        <p className='text-3xl italic py-2'>Request your online consultation without leaving your house.</p>
       </div>
       <div>
         <img />
