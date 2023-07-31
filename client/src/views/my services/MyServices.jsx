@@ -88,16 +88,11 @@ const MyServices = () => {
         <tbody className="border">
             {userService?.products.map(serv => (
             <tr className="border" key={serv._id}>
-              <td className="flex items-center justify-center rounded">
-                <img className="p-2 text-center w-[20%] rounded-full" src={serv.photo} />
-              </td>
+              <img className="py-1text-center w-[20%] rounded-full mx-auto" src={serv.photo} />
               <td className="border p-2 text-center">{serv.name}</td>
               <td className="border p-2 text-center">{serv.description}</td>
               <td className="border p-2 text-center">{serv.price}</td>
-              <td className="p-2 text-center flex gap-2 items-center justify-center">
-                <button onClick={editService} className="bg-green-600 py-2 w-[80px] rounded text-white">edit</button>
-                <button onClick={() => removeService(serv._id)} className="bg-red-600 py-2 w-[80px] rounded text-white">delete</button>
-              </td>
+              <button onClick={() => removeService(serv._id)} className="bg-red-600 py-2 w-[80px] rounded text-white relative bottom-4 mx-10">delete</button>
             </tr>
             ))}
         </tbody>

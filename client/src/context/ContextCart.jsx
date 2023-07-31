@@ -50,9 +50,25 @@ const CartContextProvider = ({children}) => {
     }
 
     const deleteItemFromCart = (_id) => {
-        setCart(prevCart => {
-            const deleteItem = prevCart.filter((item) => item._id !== _id)
-            return deleteItem
+        Swal.fire({
+            icon: 'warning',
+            title: 'Are you sure to remove this item?',
+            showCancelButton: true,
+            confirmButtonText:'Yes, remove it',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if(result.isConfirmed){
+                setCart(prevCart => {
+                    const deleteItem = prevCart.filter((item) => item._id !== _id)
+                    return deleteItem
+                })
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Item removed from the Cart',
+                    confirmButtonText: 'Accept'
+                })
+            }
+
         })
     }
 

@@ -73,12 +73,19 @@ router.put('/products/:id', (req, res) => {
 })
 
 //delete a product
-router.delete('/products/:id', (req, res) => {
-    const { id } = req.params
-    productSchema
-        .deleteOne({_id: id})
-        .then((data) => res.json(data))
-        .catch((err) => ({message: err.message}))
-})
+router.delete('/products/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const product = await productSchema.findOne({ _id: id });
+        const user = await userSchema.findOne({ _id: product.owner });
+        await productSchema.deleteOne({ _id: id });
+        user.products.pull(id);
+        await user.save();
+
+        res.json({ message: 'Producto eliminado correctamente' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
 
 module.exports = router
