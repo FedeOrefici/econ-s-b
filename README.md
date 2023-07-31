@@ -1,4 +1,4 @@
-# econ-s-b
+# econ-s-b - Services about consultations for profesionals, you can seel and buy services in a few clicks. Technologies i used: React, Express, mongoDb, mongoose, jwt, bcrypt, react paginate, react calendar.
 ![image](https://github.com/FedeOrefici/econ-s-b/assets/86120837/427d74b7-0f38-478b-8ce0-ed89771130d1)
 ![image](https://github.com/FedeOrefici/econ-s-b/assets/86120837/a853eae0-628f-4b89-82ca-3d87ffdcf6f1)
 ![image](https://github.com/FedeOrefici/econ-s-b/assets/86120837/e7d7d310-143e-43ad-abf2-64592d8e8c8e)
