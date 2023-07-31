@@ -8,8 +8,6 @@ const Cart = () => {
   const { handleCloseCart, cart, deleteItemFromCart } = useContext(CartContext)
   const totalPrice = cart.reduce((acc, curr) => acc + curr.price, 0)
 
-  console.log(cart);
-
   useEffect(() => {
     if(cart.length === 0){
       handleCloseCart()
